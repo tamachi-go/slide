@@ -1,0 +1,22 @@
+{
+  "name": "slide",
+  "type": "module",
+  "private": true,
+  "packageManager": "pnpm@11.21.0+sha512.521705bce689924eac72f5a3587122f362689ef6571e55ba80076fd637c11132ecffada26fad4ea79c485bfddbfd3d5a2a5b05805a77e893de71ec8a6cca3bb1",
+  "scripts": {
+    "build": "slidev build",
+    "dev": "slidev --open",
+    "export": "node scripts/export-pdf-slide.mjs",
+    "switch": "node scripts/switch-slide.mjs",
+    "gen": "node scripts/generate-slide.mjs"
+  },
+  "dependencies": {
+    "@slidev/cli": "52.19.0",
+    "@slidev/theme-default": "latest",
+    "@slidev/theme-seriph": "latest",
+    "vue": "3.5.41"
+  },
+  "devDependencies": {
+    "playwright-chromium": "1.62.1"
+  }
+}
