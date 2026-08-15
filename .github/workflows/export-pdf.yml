@@ -1,0 +1,66 @@
+name: Export PDF
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'slides/**'
+  pull_request:
+    paths:
+      - 'slides/**'
+  workflow_dispatch:
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+
+      - uses: pnpm/action-setup@820762786026740c76f36085b0efc47a31fe5020 # v6.0.10
+
+      - uses: actions/setup-node@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.0
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Install Playwright browser
+        run: pnpm exec playwright install --with-deps chromium
+
+      - name: Detect changed slide files
+        if: github.event_name != 'workflow_dispatch'
+        id: changed
+        uses: tj-actions/changed-files@9426d40962ed5378910ee2e21d5f8c6fcbf2dd96 # v47.0.6
+        with:
+          files: slides/**/*.md
+
+      - name: Export slide decks to PDF
+        run: |
+          mkdir -p output
+
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            targets=$(ls slides/*.md)
+          else
+            targets="${{ steps.changed.outputs.all_changed_files }}"
+          fi
+
+          if [ -z "$targets" ]; then
+            echo "対象のスライドファイルが無いのでスキップします"
+            exit 0
+          fi
+
+          for f in $targets; do
+            name=$(basename "$f" .md)
+            pnpm run switch -- "$name"
+            pnpm run export -- "$name"
+          done
+
+      - uses: actions/upload-artifact@ff378ebe6b225b0680b81c1ad4498ae0d1d3a5e3 # v7.0.1
+        with:
+          name: slides-pdf
+          path: output/*.pdf
