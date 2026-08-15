@@ -34,6 +34,24 @@ pnpm run gen -- 2026-08-20-tamachi-go-01      # slides/2026-08-20-tamachi-go-01.
 pnpm run switch -- 2026-08-20-tamachi-go-01   # slides.md をそのファイルに切り替え
 ```
 
+## レイアウト
+
+`layouts/` に tamachi.go 用のレイアウトがあります。フロントマターの `layout` に指定して使います（`pnpm run gen` で生成される雛形は最初から一通り使っています）。
+
+| layout | 用途 |
+| --- | --- |
+| `Cover` | 表紙（イベント名・日時・会場） |
+| `Section` | 章区切り（見出しのみを想定、本文は載せない） |
+| `End` | 締めのスライド |
+| （指定なし） | 通常の本文スライド（`layouts/default.vue` でブランドカラーを適用済み） |
+
+配色はロゴ（`public/images/common/square.png`）から抽出したブランドカラーです。
+
+- ティール `#00bfcf`
+- 濃いティール `#008ca6`
+
+OS/ブラウザのダークモードに引っ張られないよう `switch` が生成する `slides.md` に `colorSchema: light` を固定で入れています（`src` で読み込む `slides/*.md` 側に書いても効かないので注意）。
+
 ## 起動
 
 ```bash

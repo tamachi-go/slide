@@ -16,5 +16,5 @@ if (!existsSync(filePath)) {
   process.exit(1)
 }
 
-writeFileSync('slides.md', `---\nsrc: ${filePath}\n---\n`)
+writeFileSync('slides.md', `---\nsrc: ${filePath}\ncolorSchema: light\n---\n`)
 console.log(`slides.md を ${filePath} に切り替えました`)
