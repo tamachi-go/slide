@@ -1,0 +1,16 @@
+name: cSpell
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  cspell:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: streetsidesoftware/cspell-action@de2a73e963e7443969755b648a1008f77033c5b2 # v8.4.0
+        with:
+          config: ./cspell.config.yaml

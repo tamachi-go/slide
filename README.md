@@ -44,3 +44,7 @@ pnpm run dev
 pnpm run build           # 静的サイトとして出力
 pnpm run export -- <名前> # output/<名前>.pdf にエクスポート
 ```
+
+## 誤字対策
+
+cSpellの辞書に登録する単語は、[project-words.txt](./project-words.txt) に追加してください。
