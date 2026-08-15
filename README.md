@@ -1,5 +1,9 @@
 # slide
 
+<div style="text-align: center;">
+  <img src="./public/images/common/gopher_only.png" width="360" />
+</div>
+
 運営スライド管理しており、[Slidev](https://sli.dev/) で作成しています
 
 ## セットアップ
