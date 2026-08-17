@@ -6,7 +6,7 @@ const name = process.argv.slice(2).find(arg => arg !== '--')
 
 if (!name) {
   console.error('使い方: pnpm run gen -- <スライド名>')
-  console.error('例:     pnpm run gen -- 2026-08-20-tamachi-go-01')
+  console.error('例:     pnpm run gen -- 20260820')
   process.exit(1)
 }
 
@@ -25,18 +25,31 @@ if (existsSync(filePath)) {
 
 const content = `---
 theme: seriph
-title: タイトル
+title: tamachi.go_#0
+layout: Cover
 ---
 
-# タイトル
+# tamachi.go #1
 
-発表日 発表会名 名前
+YYYY-MM-DD(DAY) hh:mm〜
 
+会場：会場名
+
+---
+layout: Section
 ---
 
 # 見出し
 
 内容
+
+---
+layout: End
+---
+
+# ありがとうございました
+
+tamachi.go
 `
 
 writeFileSync(filePath, content)

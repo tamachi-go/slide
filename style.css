@@ -1,0 +1,13 @@
+.slidev-layout h1 {
+  color: #00232a;
+  padding-bottom: 0.4rem;
+  border-bottom: 4px solid #00bfcf;
+}
+
+.slidev-layout h2 {
+  color: #008ca6;
+}
+
+.slidev-layout a {
+  color: #008ca6;
+}
