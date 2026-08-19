@@ -43,7 +43,7 @@ pnpm run switch -- 2026-08-20-tamachi-go-01   # slides.md をそのファイル�
 | `Cover` | 表紙（イベント名・日時・会場） |
 | `Section` | 章区切り（見出しのみを想定、本文は載せない） |
 | `End` | 締めのスライド |
-| （指定なし） | 通常の本文スライド（`layouts/default.vue` でブランドカラーを適用済み） |
+| （指定なし） | 通常の本文スライド（`style.css` でブランドカラーを適用済み） |
 
 配色はロゴ（`public/images/common/square.png`）から抽出したブランドカラーです。
 
@@ -66,6 +66,19 @@ pnpm run dev
 pnpm run build           # 静的サイトとして出力
 pnpm run export -- <名前> # output/<名前>.pdf にエクスポート
 ```
+
+## 公開（GitHub Pages）
+
+`main` に push すると GitHub Actions（`.github/workflows/deploy-pages.yml`）が `slides/` 配下の全イベントをビルドし、GitHub Pages にアーカイブとして公開します。
+
+- 一覧: `https://tamachi-go.github.io/slide/`
+- 各イベント: `https://tamachi-go.github.io/slide/slides/<名前>/`
+
+初回のみ、リポジトリの Settings → Pages → Source を **GitHub Actions** に設定してください。
+
+## PDF出力（CI Artifact）
+
+`slides/` に変更のあった push / PR では `.github/workflows/export-pdf.yml` が変更されたスライドだけを PDF にエクスポートし、Actions の実行結果に Artifact として添付します。全件まとめて出力したい場合は Actions タブから `Export PDF` を手動実行（`workflow_dispatch`）してください。
 
 ## 誤字対策
 

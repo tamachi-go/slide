@@ -15,3 +15,4 @@ andpad
 gocon
 upsider
 kamakurago
+Hiragino
