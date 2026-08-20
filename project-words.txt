@@ -16,3 +16,4 @@ gocon
 upsider
 kamakurago
 Hiragino
+gara
