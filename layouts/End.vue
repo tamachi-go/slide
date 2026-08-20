@@ -1,7 +1,11 @@
+<script setup lang="ts">
+const gopherSrc = `${import.meta.env.BASE_URL}images/common/gopher_only.png`
+</script>
+
 <template>
   <div class="end-layout w-full h-full flex flex-col items-center justify-center relative overflow-hidden">
     <div class="stripe" />
-    <img src="/images/common/gopher_only.png" class="gopher relative z-10" />
+    <img :src="gopherSrc" class="gopher relative z-10" />
     <div class="content relative z-10 text-center mt-6">
       <slot />
     </div>

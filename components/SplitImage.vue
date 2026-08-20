@@ -1,10 +1,14 @@
 <script setup lang="ts">
-withDefaults(defineProps<{
+import { computed } from 'vue'
+
+const props = withDefaults(defineProps<{
   path: string
   classes?: string
 }>(), {
   classes: 'w-full',
 })
+
+const src = computed(() => import.meta.env.BASE_URL + props.path.replace(/^\//, ''))
 </script>
 
 <template>
@@ -13,7 +17,7 @@ withDefaults(defineProps<{
       <slot />
     </div>
     <div>
-      <img :class="classes" :src="path" />
+      <img :class="classes" :src="src" />
     </div>
   </div>
 </template>
