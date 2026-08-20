@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs'
+import { copyFileSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs'
 
 const base = process.env.PAGES_BASE ?? '/slide/'
 
@@ -62,9 +62,15 @@ const html = `<!doctype html>
     a:hover {
       text-decoration: underline;
     }
+    .logo {
+      display: block;
+      width: 160px;
+      margin: 0 auto 24px;
+    }
   </style>
 </head>
 <body>
+  <img class="logo" src="${base}images/common/square.png" alt="tamachi.go" />
   <h1>tamachi.go slides</h1>
   <ul>
 ${listHtml}
@@ -73,6 +79,7 @@ ${listHtml}
 </html>
 `
 
-mkdirSync('dist', { recursive: true })
+mkdirSync('dist/images/common', { recursive: true })
+copyFileSync('public/images/common/square.png', 'dist/images/common/square.png')
 writeFileSync('dist/index.html', html)
 console.log(`dist/index.html を生成しました（${items.length}件）`)
