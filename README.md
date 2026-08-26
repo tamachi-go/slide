@@ -6,6 +6,8 @@
 
 運営スライド管理しており、[Slidev](https://sli.dev/) で作成しています
 
+[こちらにて公開中](https://tamachi-go.github.io/slide/)
+
 ## セットアップ
 
 ### 事前準備
