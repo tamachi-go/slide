@@ -17,3 +17,4 @@ upsider
 kamakurago
 Hiragino
 gara
+qrcode
