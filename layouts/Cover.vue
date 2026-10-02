@@ -47,7 +47,6 @@ const hashtagQrSrc = `${import.meta.env.BASE_URL}images/common/hashtag_qr.png`
 }
 
 .content :deep(p) {
-  margin-top: 0.75rem;
   font-size: 1.25rem;
   color: #008ca6;
 }

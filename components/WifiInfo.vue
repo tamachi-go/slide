@@ -11,7 +11,7 @@ withDefaults(defineProps<{
 </script>
 
 <template>
-  <div v-if="compact" class="mt-4 flex gap-8 text-lg text-[#008ca6]">
+  <div v-if="compact" class="mt-1 flex gap-8 text-lg text-[#008ca6]">
     <span>SSID <code class="text-xl">{{ ssid }}</code></span>
     <span>PASS <code class="text-xl">{{ pass }}</code></span>
   </div>
