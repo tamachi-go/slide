@@ -1,5 +1,14 @@
+<script setup lang="ts">
+import { computed } from 'vue'
+import { useNav } from '@slidev/client'
+
+const { currentLayout } = useNav()
+const layoutsWithoutHashtag = new Set(['cover'])
+const showHashtag = computed(() => !layoutsWithoutHashtag.has(currentLayout.value.toLowerCase()))
+</script>
+
 <template>
-  <div class="hashtag">
+  <div v-if="showHashtag" class="hashtag">
     #tamachigo
   </div>
 </template>

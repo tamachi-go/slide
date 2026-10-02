@@ -1,11 +1,16 @@
 <script setup lang="ts">
 const gopherSrc = `${import.meta.env.BASE_URL}images/common/gopher_only.png`
+const hashtagQrSrc = `${import.meta.env.BASE_URL}images/common/hashtag_qr.png`
 </script>
 
 <template>
   <div class="cover-layout w-full h-full flex flex-col justify-center px-20 relative overflow-hidden">
     <div class="stripe" />
     <img :src="gopherSrc" class="gopher" />
+    <div class="absolute right-8 top-8 z-20 w-52 text-center">
+      <XHashtag />
+      <img :src="hashtagQrSrc" class="mt-0 w-full" alt="Xのハッシュタグページを開くQRコード">
+    </div>
     <div class="content relative z-10 max-w-140">
       <slot />
     </div>
