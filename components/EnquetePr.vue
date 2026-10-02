@@ -5,5 +5,5 @@ defineProps<{
 </script>
 
 <template>
-  <ImageCenter classes="h-360px" :path="path" />
+  <ImageCenter classes="h-420px" :path="path" />
 </template>
