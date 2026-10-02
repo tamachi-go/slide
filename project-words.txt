@@ -21,3 +21,5 @@ tamachi
 tinygo
 upsider
 vite
+gopls
+Rinrin
