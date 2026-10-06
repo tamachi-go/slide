@@ -1,5 +1,5 @@
 <template>
-  <div class="section-layout w-full h-full flex flex-col justify-center px-20 relative overflow-hidden">
+  <div class="section-layout w-full h-full flex flex-col items-center justify-center px-20 text-center relative overflow-hidden">
     <div class="bar" />
     <div class="content relative z-10 max-w-160">
       <slot />
