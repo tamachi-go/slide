@@ -26,3 +26,5 @@ Rinrin
 Ebitengine
 tamachigo
 0hJonny
+satoken
+ken5owata
