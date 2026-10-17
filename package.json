@@ -8,15 +8,18 @@
     "dev": "slidev --open",
     "export": "node scripts/export-pdf-slide.mjs",
     "switch": "node scripts/switch-slide.mjs",
-    "gen": "node scripts/generate-slide.mjs"
+    "gen": "node scripts/generate-slide.mjs",
+    "qr": "node scripts/generate-qr.mjs"
   },
   "dependencies": {
     "@slidev/cli": "52.19.0",
     "@slidev/theme-default": "latest",
     "@slidev/theme-seriph": "latest",
+    "qrcode": "1.5.4",
     "vue": "3.5.41"
   },
   "devDependencies": {
+    "@types/node": "26.4.1",
     "playwright-chromium": "1.62.1"
   }
 }
