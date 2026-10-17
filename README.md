@@ -29,7 +29,7 @@ pnpm install
 
 ## スライドの作成・切り替え
 
-スライドは `slides/<名前>.md` として1本ずつ管理し、実行時の入口となる `slides.md`（Git管理外）を `switch` コマンドで切り替えます。
+スライドは `slides/<名前>.md` として1本ずつ管理し、実行時の入口となる `slides.md`（Git管理外）を `switch` コマンドで切り替えます
 
 ```bash
 pnpm run gen -- 2026-08-20-tamachi-go-01      # slides/2026-08-20-tamachi-go-01.md を新規作成
@@ -38,7 +38,8 @@ pnpm run switch -- 2026-08-20-tamachi-go-01   # slides.md をそのファイル�
 
 ## レイアウト
 
-`layouts/` に tamachi.go 用のレイアウトがあります。フロントマターの `layout` に指定して使います（`pnpm run gen` で生成される雛形は最初から一通り使っています）。
+`layouts/` に tamachi.go 用のレイアウトがあります<br>
+formatterの `layout` に指定して使います（`pnpm run gen` で生成される雛形は最初から一通り使っています）
 
 | layout | 用途 |
 | --- | --- |
@@ -47,12 +48,14 @@ pnpm run switch -- 2026-08-20-tamachi-go-01   # slides.md をそのファイル�
 | `End` | 締めのスライド |
 | （指定なし） | 通常の本文スライド（`style.css` でブランドカラーを適用済み） |
 
-配色はロゴ（`public/images/common/square.png`）から抽出したブランドカラーです。
+配色はロゴ（`public/images/common/square.png`）から抽出したブランドカラーです
 
 - ティール `#00bfcf`
 - 濃いティール `#008ca6`
 
-OS/ブラウザのダークモードに引っ張られないよう `switch` が生成する `slides.md` に `colorSchema: light` を固定で入れています（`src` で読み込む `slides/*.md` 側に書いても効かないので注意）。
+通常レイアウトの本文サイズは `1.6rem` で、`tamachi.goとは` の本文に合わせています表を含むスライドは Slidev 標準の `1.1rem` です
+
+OS/ブラウザのダークモードに引っ張られないよう `switch` が生成する `slides.md` に `colorSchema: light` を固定で入れています（`src` で読み込む `slides/*.md` 側に書いても効かないので注意）
 
 ## 起動
 
@@ -60,7 +63,8 @@ OS/ブラウザのダークモードに引っ張られないよう `switch` が�
 pnpm run dev
 ```
 
-`http://localhost:3030` で確認できます。`switch` で指定したファイルを編集すると反映されます
+`http://localhost:3030` で確認できます<br>
+`switch` で指定したファイルを編集すると反映されます
 
 ## ビルド / エクスポート
 
@@ -71,17 +75,18 @@ pnpm run export -- <名前> # output/<名前>.pdf にエクスポート
 
 ## 公開（GitHub Pages）
 
-`main` に push すると GitHub Actions（`.github/workflows/deploy-pages.yml`）が `slides/` 配下の全イベントをビルドし、GitHub Pages にアーカイブとして公開します。
+`main` に push すると GitHub Actions（`.github/workflows/deploy-pages.yml`）が `slides/` 配下の全イベントをビルドし、GitHub Pages にアーカイブとして公開します
 
 - 一覧: `https://tamachi-go.github.io/slide/`
 - 各イベント: `https://tamachi-go.github.io/slide/slides/<名前>/`
 
-初回のみ、リポジトリの Settings → Pages → Source を **GitHub Actions** に設定してください。
+初回のみ、リポジトリの Settings → Pages → Source を **GitHub Actions** に設定してください
 
 ## PDF出力（CI Artifact）
 
-`slides/` に変更のあった push / PR では `.github/workflows/export-pdf.yml` が変更されたスライドだけを PDF にエクスポートし、Actions の実行結果に Artifact として添付します。全件まとめて出力したい場合は Actions タブから `Export PDF` を手動実行（`workflow_dispatch`）してください。
+`slides/` に変更のあった push / PR では `.github/workflows/export-pdf.yml` が変更されたスライドだけを PDF にエクスポートし、Actions の実行結果に Artifact として添付します<br>
+全件まとめて出力したい場合は Actions タブから `Export PDF` を手動実行（`workflow_dispatch`）してください
 
 ## 誤字対策
 
-cSpellの辞書に登録する単語は、[project-words.txt](./project-words.txt) に追加してください。
+cSpellの辞書に登録する単語は、[project-words.txt](./project-words.txt) に追加してください

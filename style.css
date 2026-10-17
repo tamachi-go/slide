@@ -1,3 +1,11 @@
+.slidev-layout.default {
+  font-size: 1.6rem;
+}
+
+.slidev-layout.default:has(> table) {
+  font-size: 1.1rem;
+}
+
 .slidev-layout h1 {
   color: #00232a;
   padding-bottom: 0.4rem;
