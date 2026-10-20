@@ -30,3 +30,4 @@ satoken
 ken5owata
 hatena
 gijutsushoten
+asakusa
