@@ -4,8 +4,10 @@ import { computed } from 'vue'
 const props = withDefaults(defineProps<{
   path: string
   classes?: string
+  alt?: string
 }>(), {
-  classes: ''
+  classes: '',
+  alt: '',
 })
 
 const src = computed(() => import.meta.env.BASE_URL + props.path.replace(/^\//, ''))
@@ -13,6 +15,6 @@ const src = computed(() => import.meta.env.BASE_URL + props.path.replace(/^\//, 
 
 <template>
   <div class="mt-16px grid place-items-center">
-    <img :class="classes" :src="src" />
+    <img :class="classes" :src="src" :alt="alt" />
   </div>
 </template>
