@@ -5,6 +5,7 @@
   "packageManager": "pnpm@12.18.0",
   "scripts": {
     "build": "slidev build",
+    "build:all": "bash scripts/build-all.sh",
     "dev": "slidev --open",
     "export": "node scripts/export-pdf-slide.mjs",
     "switch": "node scripts/switch-slide.mjs",
