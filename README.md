@@ -87,6 +87,13 @@ pnpm run export -- <名前> # output/<名前>.pdf にエクスポート
 `slides/` に変更のあった push / PR では `.github/workflows/export-pdf.yml` が変更されたスライドだけを PDF にエクスポートし、Actions の実行結果に Artifact として添付します<br>
 全件まとめて出力したい場合は Actions タブから `Export PDF` を手動実行（`workflow_dispatch`）してください
 
+## 依存関係の更新
+
+- [Renovate](https://docs.renovatebot.com)（設定は `renovate.json`、共通設定は [tamachi-go/.github の renovate-config.json](https://github.com/tamachi-go/.github/blob/main/renovate-config.json)）: npm パッケージ・`package.json` の `packageManager`（pnpm）・`.node-version` の Node.js を更新します。PR は月曜 0〜12 時台（JST）に作られ、状況は「Dependency Dashboard」issue で確認できます
+  - リリースから 7 日（npm パッケージのメジャーは pnpm も含めて 14 日）経つまで PR を作りません。`.node-version` の Node.js は 7 日待ち、LTS のバージョンにだけ上げます。脆弱性修正は待たずに作ります
+  - Slidev（`@slidev/*`）はまとめて 1 PR、devDependencies のマイナー・パッチもまとめて 1 PR にします。`@types/node` のメジャー更新は Dependency Dashboard で承認したときだけ作ります
+- Dependabot（`.github/dependabot.yml`）: GitHub Actions のみ。action を上げる PR で `.github/workflows/actions.lock` も一緒に再生成するため
+
 ## 誤字対策
 
 cSpellの辞書に登録する単語は、[project-words.txt](./project-words.txt) に追加してください

@@ -1,3 +1,6 @@
+# GitHub Actions だけ Dependabot で更新する。Dependabot は actions のバージョンを上げる PR で
+# .github/workflows/actions.lock (gh actions-lock) も同時に再生成するため。
+# それ以外 (npm パッケージ・packageManager の pnpm・.node-version の Node.js) は Renovate (renovate.json) が担当する。
 version: 2
 updates:
   - package-ecosystem: github-actions
@@ -6,10 +9,3 @@ updates:
       interval: weekly
     cooldown:
       default-days: 7
-  - package-ecosystem: npm
-    directory: /
-    schedule:
-      interval: weekly
-    cooldown:
-      default-days: 7
-      semver-major-days: 14
