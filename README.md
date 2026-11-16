@@ -103,3 +103,12 @@ Renovate の依存関係更新 PR で Slidev が壊れていないかもここ�
 ## 誤字対策
 
 cSpellの辞書に登録する単語は、[project-words.txt](./project-words.txt) に追加してください
+
+## ライセンス
+
+コード（`components/`・`layouts/`・`scripts/`・`global-bottom.vue`・`style.css`・設定ファイルなど）は [MIT License](./LICENSE) です
+
+スライド本文（`slides/*.md`）と画像（`public/images/`）は MIT License の対象外です
+
+- 画像の権利はそれぞれの権利者に帰属します（スポンサー・他イベントのロゴやバナー、X のロゴなど）
+- tamachi.go のロゴ・マスコット（`public/images/common/square.png`・`gopher_only.png`）は [tamachi-go/assets](https://github.com/tamachi-go/assets) のものです。Go Gopher のデザインは [Renée French](https://reneefrench.blogspot.com/) さんによるもので [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)、tamachi.go による改変部分は [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/deed.ja) です。利用時のクレジット表記は [assets の README](https://github.com/tamachi-go/assets#ライセンス) を参照してください
