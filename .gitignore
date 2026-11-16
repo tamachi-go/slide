@@ -7,3 +7,7 @@ dist
 components.d.ts
 output
 slides.md
+
+# mise: 個人用の mise 設定・秘密情報をコミットしないため
+mise.local.toml
+.mise.local.toml

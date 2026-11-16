@@ -1,0 +1,6 @@
+# Node.js は CI（actions/setup-node の node-version-file）と同じ .node-version を読む（二重管理しない）
+[settings]
+idiomatic_version_file_enable_tools = ["node"]
+
+[tools]
+lefthook = "2.2.2"
