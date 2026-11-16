@@ -19,6 +19,18 @@ npm install -g pnpm
 pnpm -v
 ```
 
+### Gitフック（誤字チェック）
+
+コミット時に [lefthook](https://github.com/evilmartians/lefthook) でステージしたファイルに cSpell をかけます（CIの `cSpell` ワークフローと同じチェック）<br>
+lefthook のバージョンは [mise](https://mise.jdx.dev) で `mise.toml` に固定しています。Node.js は mise も CI と同じ `.node-version` を読みます。Docker は不要です
+
+clone後に一度だけ以下を実行してください
+
+```bash
+mise install                   # lefthook・Node.js（.node-version の版）を入れる
+mise exec -- lefthook install  # Gitフックを設定
+```
+
 ### 依存関係のインストール
 
 インストール以外も依存関係の更新が必要な場合も同様のコマンドでおｋです
@@ -95,7 +107,7 @@ Renovate の依存関係更新 PR で Slidev が壊れていないかもここ�
 
 ## 依存関係の更新
 
-- [Renovate](https://docs.renovatebot.com)（設定は `renovate.json`、共通設定は [tamachi-go/.github の renovate-config.json](https://github.com/tamachi-go/.github/blob/main/renovate-config.json)）: npm パッケージ・`package.json` の `packageManager`（pnpm）・`.node-version` の Node.js を更新します。PR は月曜 0〜12 時台（JST）に作られ、状況は「Dependency Dashboard」issue で確認できます
+- [Renovate](https://docs.renovatebot.com)（設定は `renovate.json`、共通設定は [tamachi-go/.github の renovate-config.json](https://github.com/tamachi-go/.github/blob/main/renovate-config.json)）: npm パッケージ・`package.json` の `packageManager`（pnpm）・`.node-version` の Node.js・`mise.toml` の lefthook を更新します。PR は月曜 0〜12 時台（JST）に作られ、状況は「Dependency Dashboard」issue で確認できます
   - リリースから 7 日（npm パッケージのメジャーは pnpm も含めて 14 日）経つまで PR を作りません。`.node-version` の Node.js は 7 日待ち、LTS のバージョンにだけ上げます。脆弱性修正は待たずに作ります
   - Slidev（`@slidev/*`）はまとめて 1 PR、devDependencies のマイナー・パッチもまとめて 1 PR にします。`@types/node` のメジャー更新は Dependency Dashboard で承認したときだけ作ります
 - Dependabot（`.github/dependabot.yml`）: GitHub Actions のみ。action を上げる PR で `.github/workflows/actions.lock` も一緒に再生成するため

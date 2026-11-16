@@ -1,0 +1,8 @@
+# PATH 上の別の lefthook（Homebrew など）ではなく mise.toml で固定した版でフックを動かす
+lefthook: mise exec -- lefthook
+
+pre-commit:
+  commands:
+    cspell:
+      # streetsidesoftware/cspell-action@v9.2.0 が使う版に合わせる
+      run: mise exec -- npx --yes cspell@10.4.0 --config ./cspell.config.yaml --no-must-find-files {staged_files}
