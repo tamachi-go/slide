@@ -31,17 +31,8 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Build all slide decks
-        run: |
-          mkdir -p dist/slides
-          for f in slides/*.md; do
-            name=$(basename "$f" .md)
-            pnpm run switch -- "$name"
-            pnpm exec slidev build --base "/slide/slides/$name/" --out "dist/slides/$name" --router-mode hash
-          done
-
-      - name: Generate archive index page
-        run: node scripts/generate-index.mjs
+      - name: Build all slide decks and archive index page
+        run: pnpm run build:all
 
       - uses: actions/configure-pages@v6.0.0
 

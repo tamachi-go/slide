@@ -70,12 +70,18 @@ pnpm run dev
 
 ```bash
 pnpm run build           # 静的サイトとして出力
+pnpm run build:all       # slides/ 配下の全イベントを dist/ にビルド（GitHub Pages と同じ）
 pnpm run export -- <名前> # output/<名前>.pdf にエクスポート
 ```
 
+## ビルドチェック（PR）
+
+すべての PR で `.github/workflows/build.yml`（チェック名 `build`）が `pnpm run build:all` を実行し、GitHub Pages と同じ手順で全スライドがビルドできるかを確認します（公開はしません）<br>
+Renovate の依存関係更新 PR で Slidev が壊れていないかもここで検知できます
+
 ## 公開（GitHub Pages）
 
-`main` に push すると GitHub Actions（`.github/workflows/deploy-pages.yml`）が `slides/` 配下の全イベントをビルドし、GitHub Pages にアーカイブとして公開します
+`main` に push すると GitHub Actions（`.github/workflows/deploy-pages.yml`）が `pnpm run build:all` で `slides/` 配下の全イベントをビルドし、GitHub Pages にアーカイブとして公開します
 
 - 一覧: `https://tamachi-go.github.io/slide/`
 - 各イベント: `https://tamachi-go.github.io/slide/slides/<名前>/`
