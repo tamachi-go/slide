@@ -1,0 +1,33 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "共通設定 (スケジュール・待ち期間・Dependabot との分担など) は tamachi-go/.github の renovate-config.json にあり、ここには Node.js / pnpm とこのリポジトリ固有の設定だけを書く。",
+  "extends": ["github>tamachi-go/.github:renovate-config"],
+  "packageRules": [
+    {
+      "description": "npm パッケージ (package.json の packageManager の pnpm を含む) のメジャー更新は 14 日待つ。",
+      "matchManagers": ["npm"],
+      "matchUpdateTypes": ["major"],
+      "minimumReleaseAge": "14 days"
+    },
+    {
+      "description": "devDependencies のマイナー・パッチ更新は 1 PR にまとめる。",
+      "matchManagers": ["npm"],
+      "matchDepTypes": ["devDependencies"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "groupName": "devDependencies (non-major)",
+      "groupSlug": "devdependencies-non-major"
+    },
+    {
+      "description": "Slidev 本体とテーマはバージョンを揃えて 1 PR にまとめる。",
+      "matchManagers": ["npm"],
+      "matchPackageNames": ["@slidev/**", "slidev-theme-*"],
+      "groupName": "slidev"
+    },
+    {
+      "description": "@types/node のメジャーは .node-version の Node.js (LTS のみ更新される) のメジャーに合わせたいので、Dependency Dashboard で承認したときだけ作る。",
+      "matchPackageNames": ["@types/node"],
+      "matchUpdateTypes": ["major"],
+      "dependencyDashboardApproval": true
+    }
+  ]
+}
