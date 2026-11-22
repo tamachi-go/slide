@@ -21,6 +21,6 @@
   },
   "devDependencies": {
     "@types/node": "26.6.6",
-    "playwright-chromium": "1.65.0"
+    "playwright-chromium": "1.65.1"
   }
 }
