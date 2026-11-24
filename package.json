@@ -2,7 +2,7 @@
   "name": "slide",
   "type": "module",
   "private": true,
-  "packageManager": "pnpm@12.18.0",
+  "packageManager": "pnpm@12.21.0",
   "scripts": {
     "build": "slidev build",
     "build:all": "bash scripts/build-all.sh",
